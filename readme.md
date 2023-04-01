@@ -18,6 +18,10 @@ Once this code is ran you should have the venv set up to run the project. You ca
 <br>
 <code> python3 main.py </code>
 
+Once you have tested that you can run the application link it to an alias like the command below.
+<br>
+<code> alias gpt='python3 {path-to-chatgpt-project}/main.py' </code>
+
 <h3>Onboarding Process</h3>
 The onboarding process will request you to create a token for chatgpt and to enter it into the prompt. This will load the token into a saved location on your machine.
 If you need to edit this setting any time, enter {/user} into the prompt and follow the instructions to alter the token file.

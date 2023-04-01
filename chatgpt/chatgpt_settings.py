@@ -3,33 +3,53 @@ import os
 from sys import platform
 
 
-class UserData:
+class ChatGPTData:
     def __init__(self):
-        self.chatgpt_token = ""
+        self.model_engine = "text-davinci-003"
+        self.max_tokens = 100
         if platform == "linux" or platform =="linux2":
-            pass
+            self.gpt_data_path = "chatgpt_pref.json"
         elif platform == "darwin":
-            self.user_data_path = "chatgpt_pref.json"
+            self.gpt_data_path = "chatgpt_pref.json"
         elif platform == "win32":
-            self.user_data_path = "chatgpt_pref.json"
+            self.gpt_data_path = "chatgpt_pref.json"
+        if os.path.exists(self.gpt_data_path):
+            self.load_gpt_data()
+        else:
+            self.write_gpt_data_file()
 
-    def load_user_data(self):
+    def load_gpt_data(self):
         """
         Loads the chatgpt data to run the application
         """
-        if os.path.exists(self.user_data_path):
-            with open(self.user_data_path, 'r') as f:
+        if os.path.exists(self.gpt_data_path):
+            with open(self.gpt_data_path, 'r') as f:
                 data = json.load(f)
-                self.chatgpt_token = data["chatgpt_token"]
+                self.model_engine = data["model-engine"]
+                self.max_tokens = data["max-tokens"]
                 f.close
 
-    def write_user_data_file(self):
+    def get_gpt_data_json(self):
+        """
+        Returns a string of the context in the GPT Preferences
+        :return: Returns a string of the json data
+        """
+        if os.path.exists(self.gpt_data_path):
+            with open(self.gpt_data_path, 'r') as f:
+                data = json.load(f)
+                f.close
+        else:
+            return "No file found for gpt preferences"
+        return data
+
+    def write_gpt_data_file(self):
         """
         Writes the chatgpt data to manage the user's personal data
         """
-        userdata = {
-            "chatgpt_token":self.chatgpt_token
+        gpt_data = {
+            "model-engine": self.model_engine,
+            "max-tokens": self.max_tokens
         }
-        with open(self.user_data_path, 'w') as json_file:
-            json.dump(userdata, json_file, indent=4, sort_keys=True)
+        with open(self.gpt_data_path, 'w') as json_file:
+            json.dump(gpt_data, json_file, indent=4, sort_keys=True)
             json_file.close()

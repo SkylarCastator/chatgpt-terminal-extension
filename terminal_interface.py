@@ -84,7 +84,7 @@ class TerminalInterface:
         """
         variable = input('ChatGPT Settings >>')
         if variable == "/display":
-            print("{Some json file}")
+            print(self.gpt_instance.gpt_settings.get_gpt_data_json())
             self.set_chatgpt_pref_prompt()
         elif variable == "/exit":
             self.enter_user_prompt()
@@ -94,7 +94,7 @@ class TerminalInterface:
 
     def set_user_pref_prompt(self):
         """
-        Settings propmt to edit User Preferences
+        Settings prompt to edit User Preferences
         """
         variable = input('User Settings >>')
         if variable == "/display":

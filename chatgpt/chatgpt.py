@@ -1,4 +1,5 @@
 import openai
+from chatgpt.chatgpt_settings import ChatGPTData
 
 
 class ChatGPT:
@@ -7,11 +8,9 @@ class ChatGPT:
             print("The API key was not set properly use the /help menu to debug")
             return
 
+        self.gpt_settings = ChatGPTData()
         openai.api_key = api_key
         self.model_engine = "text-davinci-003"
-
-    def set_open_ai_key(self, key):
-        openai.api_key = key
 
     def test_chatgpt_connection(self):
         """
@@ -20,25 +19,24 @@ class ChatGPT:
         """
         try:
             response = openai.Completion.create(
-                engine=self.model_engine,
+                engine=self.gpt_settings.model_engine,
                 prompt="Hello",
-                max_tokens=100)
+                max_tokens=self.gpt_settings.max_tokens)
             text = response.choices[0].text.strip()
             return True
         except:
             return False
 
-
     def respond_to_prompt(self, prompt):
         """
         Sends a prompt to ChatGPT and waits for a response
         :param prompt: The Prompt to run in ChatGPT
-        :return: Returns the string of ChatGPT's response
+        :return: Returns the string of ChatGPT response
         """
         response = openai.Completion.create(
-            engine=self.model_engine,
+            engine=self.gpt_settings.model_engine,
             prompt=prompt,
-            max_tokens=100)
+            max_tokens=self.gpt_settings.max_tokens)
         text = response.choices[0].text.strip()
         return text
 
