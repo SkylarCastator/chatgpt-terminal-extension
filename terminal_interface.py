@@ -11,7 +11,11 @@ class TerminalInterface:
         if self.user_data.check_user_file_exists():
             self.user_data.load_user_data()
             self.gpt_instance = ChatGPT(self.user_data.chatgpt_token)
-            self.enter_user_prompt()
+            connection = self.gpt_instance.test_chatgpt_connection()
+            if connection:
+                self.enter_user_prompt()
+            else:
+                print("The connection to ChatGPT could not be created. Make sure you are connected to the internet or have the correct key")
         else:
             self.user_data.write_user_data_file()
             self.prompt_onboarding()
@@ -25,7 +29,7 @@ class TerminalInterface:
         self.prompt_for_chatgpt_token()
 
     def prompt_for_chatgpt_token(self):
-        variable = input('>>')
+        variable = input('Set ChatGPT Key >>')
         if variable == "":
             print("Please enter a valid key for ChatGPT")
             self.prompt_for_chatgpt_token()
@@ -78,7 +82,7 @@ class TerminalInterface:
         """
         Settings prompt menu to change the preferences for ChatGPT
         """
-        variable = input('chatgpt-settings >>')
+        variable = input('ChatGPT Settings >>')
         if variable == "/display":
             print("{Some json file}")
             self.set_chatgpt_pref_prompt()
@@ -92,10 +96,12 @@ class TerminalInterface:
         """
         Settings propmt to edit User Preferences
         """
-        variable = input('user-settings >>')
+        variable = input('User Settings >>')
         if variable == "/display":
-            print("{Some json file}")
+            print(self.user_data.get_user_data_json())
             self.set_user_pref_prompt()
+        elif variable == "/chatgpt-key":
+            self.prompt_for_chatgpt_token()
         elif variable == "/exit":
             self.enter_user_prompt()
         else:

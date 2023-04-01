@@ -31,3 +31,14 @@ Create an account and then go to the keys page here:
 https://platform.openai.com/account/api-keys
 
 Copy the key and then enter it into the prompt. This will allow you to start using the application.
+
+<h3> Basic Usage </h3>
+The ">>" prompt is there to helpo the user to understand what level they are using the application.
+When it doesnt have any extra contact before the prompt you are using the main layer that allows you to prompt ChatGPT.
+
+The other command tha can be used currently include:
+
+- <b>/help</b> : Shows the list of options for the application to be ran.
+- <b>/user</b> : Allows the user to change the user pref file
+- <b>/chatgpt</b> : Allows the user to change the chatgpt prompt inputs.
+- <b>/exit</b> : Allows the user to exit the application
