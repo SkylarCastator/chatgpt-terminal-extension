@@ -7,10 +7,39 @@ class TerminalInterface:
     def __init__(self):
         ascii_banner = pyfiglet.figlet_format("ChatGPT")
         print(ascii_banner)
-        user_data = UserData()
-        user_data.load_user_data()
-        self.gpt_instance = ChatGPT(user_data.chatgpt_token)
-        self.enter_user_prompt()
+        self.user_data = UserData()
+        if self.user_data.check_user_file_exists():
+            self.user_data.load_user_data()
+            self.gpt_instance = ChatGPT(self.user_data.chatgpt_token)
+            self.enter_user_prompt()
+        else:
+            self.user_data.write_user_data_file()
+            self.prompt_onboarding()
+
+    def prompt_onboarding(self):
+        self.user_data.write_user_data_file()
+        print("""
+        Welcome to ChatGPT Terminal App
+        We need to connect a ChatGPT key to the application.
+        Use the link https://platform.openai.com/account/api-keys to get the key and enter it in the prompt.""")
+        self.prompt_for_chatgpt_token()
+
+    def prompt_for_chatgpt_token(self):
+        variable = input('>>')
+        if variable == "":
+            print("Please enter a valid key for ChatGPT")
+            self.prompt_for_chatgpt_token()
+        else:
+            self.gpt_instance = ChatGPT(variable)
+            connection_result = self.gpt_instance.test_chatgpt_connection()
+            if connection_result:
+                self.user_data.chatgpt_token = variable
+                self.user_data.write_user_data_file()
+                print("Connection Completed. Start ChatGPT by entering a prompt")
+                self.enter_user_prompt()
+            else:
+                print("Failed to connect to ChatGPT, make sure you are using the correct key.")
+                self.prompt_for_chatgpt_token()
 
     def enter_user_prompt(self):
         """

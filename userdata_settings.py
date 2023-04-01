@@ -13,6 +13,16 @@ class UserData:
         elif platform == "win32":
             self.user_data_path = "user_pref.json"
 
+    def check_user_file_exists(self):
+        """
+        Checks if there is a user file
+        :return: (boolean) Returns result if path exists or not.
+        """
+        if os.path.exists(self.user_data_path):
+            return True
+        else:
+            return False
+
     def load_user_data(self):
         """
         Loads the user data to run the application
