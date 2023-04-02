@@ -1,18 +1,18 @@
 import json
 import os
-from sys import platform
+import platform_helper
 
 
 class ChatGPTData:
     def __init__(self):
         self.model_engine = "text-davinci-003"
         self.max_tokens = 100
-        if platform == "linux" or platform =="linux2":
-            self.gpt_data_path = "chatgpt_pref.json"
-        elif platform == "darwin":
-            self.gpt_data_path = "chatgpt_pref.json"
-        elif platform == "win32":
-            self.gpt_data_path = "chatgpt_pref.json"
+
+        project_path = f"{platform_helper.get_appdata_folder()}/GPT-Terminal/"
+        if not os.path.exists(project_path):
+            os.mkdir(project_path)
+        self.gpt_data_path = f"{project_path}chatgpt_pref.json"
+
         if os.path.exists(self.gpt_data_path):
             self.load_gpt_data()
         else:

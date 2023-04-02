@@ -1,17 +1,16 @@
 import json
 import os
-from sys import platform
-
+import platform_helper
 
 class UserData:
     def __init__(self):
         self.chatgpt_token = ""
-        if platform == "linux" or platform == "linux2":
-            pass
-        elif platform == "darwin":
-            self.user_data_path = "user_pref.json"
-        elif platform == "win32":
-            self.user_data_path = "user_pref.json"
+
+        project_path = f"{platform_helper.get_appdata_folder()}/GPT-Terminal/"
+        if not os.path.exists(project_path):
+            os.mkdir(project_path)
+        self.user_data_path = f"{project_path}user_pref.json"
+
 
     def check_user_file_exists(self):
         """
