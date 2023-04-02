@@ -1,5 +1,5 @@
-from chatgpt.chatgpt import ChatGPT
-from userdata_settings import UserData
+from gpt_terminal.chatgpt.chatgpt import ChatGPT
+from gpt_terminal.preferences.userdata_settings import UserData
 import pyfiglet
 
 
@@ -24,7 +24,7 @@ class TerminalInterface:
         self.user_data.write_user_data_file()
         print("""
         Welcome to ChatGPT Terminal App
-        We need to connect a ChatGPT key to the application.
+        We need to connect a ChatGPT key to the gpt_terminal.
         Use the link https://platform.openai.com/account/api-keys to get the key and enter it in the prompt.""")
         self.prompt_for_chatgpt_token()
 

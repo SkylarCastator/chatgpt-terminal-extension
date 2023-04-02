@@ -1,6 +1,6 @@
 import json
 import os
-import platform_helper
+from gpt_terminal.helpers import platform_helper
 
 
 class ChatGPTData:
@@ -20,7 +20,7 @@ class ChatGPTData:
 
     def load_gpt_data(self):
         """
-        Loads the chatgpt data to run the application
+        Loads the chatgpt data to run the gpt_terminal
         """
         if os.path.exists(self.gpt_data_path):
             with open(self.gpt_data_path, 'r') as f:

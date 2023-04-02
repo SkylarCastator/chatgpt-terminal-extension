@@ -4,8 +4,8 @@ import sys
 
 def get_appdata_folder():
     """
-    Finds the path for application data based on the platform
-    :return: Returns the path of the location application data is stored
+    Finds the path for gpt_terminal data based on the platform
+    :return: Returns the path of the location gpt_terminal data is stored
     """
     home = pathlib.Path.home()
     if sys.platform == "win32":

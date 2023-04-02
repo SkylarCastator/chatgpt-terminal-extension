@@ -1,6 +1,7 @@
 import json
 import os
-import platform_helper
+from gpt_terminal.helpers import platform_helper
+
 
 class UserData:
     def __init__(self):
@@ -24,7 +25,7 @@ class UserData:
 
     def load_user_data(self):
         """
-        Loads the user data to run the application
+        Loads the user data to run the gpt_terminal
         """
         if os.path.exists(self.user_data_path):
             with open(self.user_data_path, 'r') as f:
