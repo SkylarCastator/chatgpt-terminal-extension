@@ -6,13 +6,13 @@ This project is designed to be run in the users terminal. I decided to design th
 <h3> Installation</h3>
 First checkout the repository using Git:
 <br>
-<code> git checkout https://github.com/SkylarCastator/chatgpt-terminal-extension.git </code>
+<code> git clone https://github.com/SkylarCastator/chatgpt-terminal-extension.git </code>
 
 Make sure to install Python. My Venv is using version 3.11 but should work on different versions.
 Also make sure you have pip setup as part of your python package. 
 Next cd into the project directory and run:
 <br>
-<code> pip install requirements.txt </code>
+<code> pip install -r requirements.txt </code>
 
 Once this code is ran you should have the venv set up to run the project. You can test by running:
 <br>
