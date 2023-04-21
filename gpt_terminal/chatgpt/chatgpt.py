@@ -36,7 +36,8 @@ class ChatGPT:
         response = openai.Completion.create(
             engine=self.gpt_settings.model_engine,
             prompt=prompt,
-            max_tokens=self.gpt_settings.max_tokens)
+            max_tokens=self.gpt_settings.max_tokens,
+            temperature=0)
         text = response.choices[0].text.strip()
         return text
 

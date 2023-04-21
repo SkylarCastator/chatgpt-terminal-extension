@@ -1,6 +1,10 @@
 from gpt_terminal.chatgpt.chatgpt import ChatGPT
 from gpt_terminal.preferences.userdata_settings import UserData
 import pyfiglet
+import chatgpt.prompt_ui.history_ui as history_menu
+import chatgpt.prompt_ui.model_menu as model_menu
+import chatgpt.prompt_ui.template_menu as template_menu
+import chatgpt.prompt_ui.user_menu as user_menu
 
 
 class TerminalInterface:
@@ -50,28 +54,28 @@ class TerminalInterface:
         Recursive function to call for the user prompt to be entered into ChatGPT
         """
         variable = input('>>')
-        if variable == "/help":
+        if variable == ":help":
             print("""
             ChatGPT Application Help Menu :
-                /help : Loads the help menu
-                /user : Allows the user to edit their preferences and tokens
-                /chatgpt : Allows the user to change the settings for ChatGPT
-                /exit : Exits the Application""")
+                :help : Loads the help menu
+                :user : Allows the user to edit their preferences and tokens
+                :chatgpt : Allows the user to change the settings for ChatGPT
+                :exit : Exits the Application""")
             self.enter_user_prompt()
-        elif variable == "/user":
+        elif variable == ":user":
             print("""
             Enter a User Setting to edit :
-                /display : Displays the full content of the setting file
-                /chatgpt_token : Edits the ChatGPT Token
-                /exit : Exits the user setting prompt""")
+                :display : Displays the full content of the setting file
+                :chatgpt_token : Edits the ChatGPT Token
+                :exit : Exits the user setting prompt""")
             self.set_user_pref_prompt()
-        elif variable == "/chatgpt":
+        elif variable == ":chatgpt":
             print("""
             Enter a ChatGPT setting to edit:
-                /display : Displays the full content of the settings file
-                /exit : Exits the ChatGPT settings prompt""")
+                :display : Displays the full content of the settings file
+                :exit : Exits the ChatGPT settings prompt""")
             self.set_chatgpt_pref_prompt()
-        elif variable == "/exit":
+        elif variable == ":exit":
             exit()
         else:
             response = self.gpt_instance.respond_to_prompt(variable)
@@ -83,10 +87,10 @@ class TerminalInterface:
         Settings prompt menu to change the preferences for ChatGPT
         """
         variable = input('ChatGPT Settings >>')
-        if variable == "/display":
+        if variable == ":display":
             print(self.gpt_instance.gpt_settings.get_gpt_data_json())
             self.set_chatgpt_pref_prompt()
-        elif variable == "/exit":
+        elif variable == ":exit":
             self.enter_user_prompt()
         else:
             print("Not a valid input. enter /exit to get back into regular prompt")
@@ -97,13 +101,30 @@ class TerminalInterface:
         Settings prompt to edit User Preferences
         """
         variable = input('User Settings >>')
-        if variable == "/display":
+        if variable == ":display":
             print(self.user_data.get_user_data_json())
             self.set_user_pref_prompt()
-        elif variable == "/chatgpt-key":
+        elif variable == ":chatgpt-key":
             self.prompt_for_chatgpt_token()
-        elif variable == "/exit":
+        elif variable == ":exit":
             self.enter_user_prompt()
         else:
             print("Not a valid input. enter /exit to get back into regular prompt")
             self.set_user_pref_prompt()
+
+    def prompt_editor(self, prompt):
+        variable = input('Template Editor >>')
+        if variable == ":new":
+            print("Enter the text for the new template")
+            print("Enter Given Arguments for template")
+        elif variable == ":edit":
+            print("Enter the name of the template to edit")
+        elif variable == ":delete":
+            print("Enter the name of the template to delete")
+        elif variable == ":display":
+            print("List of Templates:")
+        elif variable == ":exit":
+            self.enter_user_prompt()
+        else: 
+            print("Not a valid input. enter /exit to get back into regular prompt")
+            self.prompt_editor(prompt)
