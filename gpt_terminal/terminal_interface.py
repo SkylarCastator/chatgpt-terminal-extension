@@ -1,10 +1,10 @@
 from gpt_terminal.chatgpt.chatgpt import ChatGPT
 from gpt_terminal.preferences.userdata_settings import UserData
 import pyfiglet
-import chatgpt.prompt_ui.history_ui as history_menu
-import chatgpt.prompt_ui.model_menu as model_menu
-import chatgpt.prompt_ui.template_menu as template_menu
-import chatgpt.prompt_ui.user_menu as user_menu
+import gpt_terminal.prompt_ui.history_menu as history_menu
+import gpt_terminal.prompt_ui.model_menu as model_menu
+import gpt_terminal.prompt_ui.template_menu as template_menu
+import gpt_terminal.prompt_ui.user_menu as user_menu
 
 
 class TerminalInterface:
@@ -23,6 +23,40 @@ class TerminalInterface:
         else:
             self.user_data.write_user_data_file()
             self.prompt_onboarding()
+
+    def compile_menu_interfaces(self):
+        menus = []
+        for menu in menus:
+            with open(menu, "r") as f:
+                data = json.load(f)
+                menu_items = []
+                for menu_item in data["menu_items"]:
+                    menu_items.append(MenuItem(menu_item["name"], menu_item["prompt"], menu_item["log_message"], menu_item["help_message"], menu_item["function"]))
+                self.menu_data = data
+
+
+    class MenuInterface:
+        def __init__(self, ):
+            print("Menu Interface")
+            self.menu_class = None
+            self.menu_data = ""
+            self.menu_items = []
+
+        def parse_menu(self):
+            filename = "menu.json"
+            with open(filename, "r") as f:
+                data = json.load(f)
+                for menu_item in data["menu_items"]:
+                    self.menu_items.append(self.MenuItem(menu_item["name"], menu_item["prompt"], menu_item["log_message"], menu_item["help_message"], menu_item["function"]))
+                self.menu_data = data
+
+    class MenuItem:
+        def __init__(self, name, prompt, log_message, help_message, function):
+            self.name = name
+            self.prompt = prompt
+            self.log_message = log_message
+            self.help_message = help_message
+            self.function = function
 
     def prompt_onboarding(self):
         self.user_data.write_user_data_file()
@@ -59,6 +93,8 @@ class TerminalInterface:
             ChatGPT Application Help Menu :
                 :help : Loads the help menu
                 :user : Allows the user to edit their preferences and tokens
+                :history :Allows the user to aceess previous chat history
+                :template : Allows the user to edit the templates for the chatgpt
                 :chatgpt : Allows the user to change the settings for ChatGPT
                 :exit : Exits the Application""")
             self.enter_user_prompt()

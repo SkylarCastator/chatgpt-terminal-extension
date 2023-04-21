@@ -9,7 +9,7 @@ First checkout the repository using Git:
 <code> git checkout https://github.com/SkylarCastator/chatgpt-terminal-extension.git </code>
 
 Make sure to install Python. My Venv is using version 3.11 but should work on different versions.
-Also make sure you have pip setup as part of your python package. 
+Also make sure you have pip setup as part of your python package.
 Next cd into the project directory and run:
 <br>
 <code> pip install requirements.txt </code>
@@ -26,7 +26,7 @@ Once you have tested that you can run the application link it to an alias like t
 The onboarding process will request you to create a token for chatgpt and to enter it into the prompt. This will load the token into a saved location on your machine.
 If you need to edit this setting any time, enter {/user} into the prompt and follow the instructions to alter the token file.
 
-Creating the token for ChatGPT can be done by going the the chat gpt website : 
+Creating the token for ChatGPT can be done by going the the chat gpt website :
 
 https://platform.openai.com
 
@@ -42,7 +42,7 @@ When it doesnt have any extra contact before the prompt you are using the main l
 
 The other command tha can be used currently include:
 
-- <b>/help</b> : Shows the list of options for the application to be ran.
-- <b>/user</b> : Allows the user to change the user pref file
-- <b>/chatgpt</b> : Allows the user to change the chatgpt prompt inputs.
-- <b>/exit</b> : Allows the user to exit the application
+- <b>:help</b> : Shows the list of options for the application to be ran.
+- <b>:user</b> : Allows the user to change the user pref file
+- <b>:chatgpt</b> : Allows the user to change the chatgpt prompt inputs.
+- <b>:exit</b> : Allows the user to exit the application
