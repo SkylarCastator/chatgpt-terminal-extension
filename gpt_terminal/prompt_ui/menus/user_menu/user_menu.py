@@ -1,10 +1,10 @@
 from gpt_terminal.chatgpt.chatgpt import ChatGPT
 from gpt_terminal.preferences.userdata_settings import UserData
 
-
 class UserMenu:
-    def __init__(self):
-        print()
+    def __init__(self, user_data):
+        print("Loaded user menu")
 
-    def help_menu_selected():
-        print("help")
+    def display_data():
+        print("Dislaying data")
+

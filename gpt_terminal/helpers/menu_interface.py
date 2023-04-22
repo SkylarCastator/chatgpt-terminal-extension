@@ -1,17 +1,12 @@
-
 class MenuInterface:
-    def __init__(self, ):
-        print("Menu Interface")
-        self.menu_class = None
-        self.menu_data = ""
-        self.menu_items = []
-
-
-class MenuItem:
-    def __init__(self, name, prompt, log_message, help_message, function):
+    def __init__(self, name="", prompt="", log_message="", help_message="", prompt_header="", func_call="", menu_items={}):
         self.name = name
         self.prompt = prompt
         self.log_message = log_message
         self.help_message = help_message
-        self.function = function
+        self.prompt_header = prompt_header
+        self.func_call = func_call
+        self.menu_items = menu_items
+
+
 

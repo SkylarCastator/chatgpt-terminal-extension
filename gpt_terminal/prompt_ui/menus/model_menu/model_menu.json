@@ -1,0 +1,19 @@
+{
+  "name": "Model Settings",
+  "prompt": ":model",
+  "log_message": "Welcome to the Model Settings Menu",
+  "help_message": "    :model - Opens the menu to adjust settings for the LLM model.",
+  "prompt_header": "Model Menu>> ",
+  "function": "",
+  "menu_items": [
+    {
+      "name": "Display",
+      "prompt": ":display",
+      "log_message": "",
+      "help_message": "Display Model Settings",
+      "prompt_header": "",
+      "function": "display_model_settings",
+      "menu_items": []
+    }
+  ]
+}

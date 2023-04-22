@@ -1,0 +1,19 @@
+{
+  "name": "User Settings",
+  "prompt": "user:",
+  "log_message": "Welcome to the User Settings Menu",
+  "help_message": "    :user - Opens the user settings menu",
+  "prompt_header": "User>> ",
+  "function": "",
+  "menu_items": [
+    {
+      "name": "Display",
+      "prompt": ":display",
+      "log_message": "",
+      "help_message": "Display User Settings",
+      "prompt_header": "",
+      "function": "display_user_settings",
+      "menu_items": []
+    }
+  ]
+}
