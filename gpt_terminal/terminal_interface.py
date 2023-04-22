@@ -110,80 +110,19 @@ class TerminalInterface:
         else:
             if menu_system.func_call != "":
                 func_call = getattr(self, menu_system.func_call)
-                func_call()
+                func_call(variable)
             else:
                 print(menu_system.log_message)
             self.enter_user_prompt_2(menu_system)
 
-    #def enter_user_prompt(self):
-    #    """
-    #    Recursive function to call for the user prompt to be entered into ChatGPT
-    #    """
-    #    variable = input('>>')
-    #    if variable == ":help":
-    #        print("""
-    #        ChatGPT Application Help Menu :
-    #            :help : Loads the help menu
-    #            :user : Allows the user to edit their preferences and tokens
-    #            :history :Allows the user to aceess previous chat history
-    #            :template : Allows the user to edit the templates for the chatgpt
-    #            :chatgpt : Allows the user to change the settings for ChatGPT
-    #            :exit : Exits the Application""")
-    #        self.enter_user_prompt()
-    #    elif variable == ":user":
-    #        print("""
-    #        Enter a User Setting to edit :
-    #            :display : Displays the full content of the setting file
-    #            :chatgpt_token : Edits the ChatGPT Token
-    #            :exit : Exits the user setting prompt""")
-    #        self.set_user_pref_prompt()
-    #    elif variable == ":chatgpt":
-    #        print("""
-    #        Enter a ChatGPT setting to edit:
-    #            :display : Displays the full content of the settings file
-    #            :exit : Exits the ChatGPT settings prompt""")
-    #        self.set_chatgpt_pref_prompt()
-    #    elif variable == ":exit":
-    #        exit()
-    #    else:
-    #        response = self.gpt_instance.respond_to_prompt(variable)
-    #        print(response)
-    #        self.enter_user_prompt()
-
-    def call_llm_response(self):
+    def call_llm_response(self, prompt):
         """
         Calls the LLM response function
         """
-        response = self.gpt_instance.respond_to_prompt("Hello ChatGPT")
+        response = self.gpt_instance.respond_to_prompt(prompt)
         print(response)
 
-   # def set_chatgpt_pref_prompt(self):
-   #     """
-   #     Settings prompt menu to change the preferences for ChatGPT
-   #     """
-   #     variable = input('ChatGPT Settings >>')
-   #     if variable == ":display":
    #         print(self.gpt_instance.gpt_settings.get_gpt_data_json())
-   #         self.set_chatgpt_pref_prompt()
-   #     elif variable == ":exit":
-   #         self.enter_user_prompt()
-   #     else:
-   #         print("Not a valid input. enter /exit to get back into regular prompt")
-   #         self.set_chatgpt_pref_prompt()
-
-    #def set_user_pref_prompt(self):
-    #    """
-    #    Settings prompt to edit User Preferences
-    #    """
-    #    variable = input('User Settings >>')
-    #    if variable == ":display":
     #        print(self.user_data.get_user_data_json())
-    #        self.set_user_pref_prompt()
-    #    elif variable == ":chatgpt-key":
-    #        self.prompt_for_chatgpt_token()
-    #    elif variable == ":exit":
-    #        self.enter_user_prompt()
-    #    else:
-    #        print("Not a valid input. enter /exit to get back into regular prompt")
     #        self.set_user_pref_prompt()
 
