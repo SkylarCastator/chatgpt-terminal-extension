@@ -1,0 +1,19 @@
+{
+  "name": "History",
+  "prompt": ":history",
+  "log_message": "Welcome to the history menu",
+  "help_message": "    :history - Opens the menu to organize previous conversations",
+  "prompt_header": "History>> ",
+  "function": "",
+  "menu_items": [
+    {
+      "name": "Display",
+      "prompt": ":display",
+      "log_message": "",
+      "help_message": "Display All Previous Conversations",
+      "prompt_header": "",
+      "function": "list_all_conversations",
+      "menu_items": []
+    }
+  ]
+}

@@ -42,7 +42,7 @@ When it doesnt have any extra contact before the prompt you are using the main l
 
 The other command tha can be used currently include:
 
-- <b>/help</b> : Shows the list of options for the application to be ran.
-- <b>/user</b> : Allows the user to change the user pref file
-- <b>/chatgpt</b> : Allows the user to change the chatgpt prompt inputs.
-- <b>/exit</b> : Allows the user to exit the application
+- <b>:help</b> : Shows the list of options for the application to be ran.
+- <b>:user</b> : Allows the user to change the user pref file
+- <b>:chatgpt</b> : Allows the user to change the chatgpt prompt inputs.
+- <b>:exit</b> : Allows the user to exit the application
