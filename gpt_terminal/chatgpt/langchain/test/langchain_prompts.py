@@ -11,12 +11,12 @@ prompt = PromptTemplate(
 
 davinci = OpenAI(model_name="text-davinici-003")
 
-llm_chain = LLMChain(
-    promp=prompt,
-    llm=davinci
-)
+#llm_chain = LLMChain(
+#    promp=prompt,
+#    llm=davinci
+#)
 
-print(llm_chain.run(quesiton="What is your name?"))
+#print(llm_chain.run(quesiton="What is your name?"))
 
-)
+#)
 

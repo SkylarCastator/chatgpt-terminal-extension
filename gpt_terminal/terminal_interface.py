@@ -1,9 +1,9 @@
 from gpt_terminal.chatgpt.chatgpt import ChatGPT
-from gpt_terminal.preferences.userdata_settings import UserData
+from gpt_terminal.menus.user_menu import UserData
 import pyfiglet
 import json
-from gpt_terminal.helpers.menu_interface import MenuInterface
-import gpt_terminal.prompt_ui.menu_config as menu_config
+from gpt_terminal.menu_interface import MenuInterface
+import gpt_terminal.menu_config as menu_config
 
 
 class TerminalInterface:

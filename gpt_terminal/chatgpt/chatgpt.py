@@ -1,5 +1,5 @@
 import openai
-from gpt_terminal.preferences.chatgpt_settings import ChatGPTData
+from gpt_terminal.menus.model_menu.chatgpt_settings import ChatGPTData
 
 
 class ChatGPT:

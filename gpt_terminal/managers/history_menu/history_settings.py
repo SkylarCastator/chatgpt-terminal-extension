@@ -1,23 +1,26 @@
 import json
 import os
-from gpt_terminal.helpers import platform_helper
-from langchain.memory import ChatMessageHistory
+from gpt_terminal import platform_helper
 from langchain.schema import messages_from_dict, messages_to_dict
 
 
 class History:
     def __init__(self):
-        project_path = f"{platform_helper.get_appdata_folder()}/GPT-Terminal/History/"
-        if not os.path.exists(project_path):
-            os.mkdir(project_path)
-    
+        self.history_path = f"{platform_helper.get_appdata_folder()}/GPT-Terminal/History/"
+        if not os.path.exists(self.history_path):
+            os.mkdir(self.history_path)
+
+    def list_history_files(self):
+        arr = os.listdir(self.history_path)
+        return arr
+
     def save_history(self, chat_history, file_name="history_0"):
-        file_path = f"{self.project_path}/{file_name}
+        file_path = f"{self.history_path}/{file_name}.json"
         with open(file_path, "w") as f:
             json.dump(messages_to_dict(chat_history.messages), f)
 
     def load_history(self, filename="history_0"):
-        file_path = f"{self.project_path}/{filename}"
+        file_path = f"{self.history_path}/{filename}.json"
         with open(f"{filename}.json", "r") as f:
             dict = json.load(f)
             return messages_from_dict(dict)

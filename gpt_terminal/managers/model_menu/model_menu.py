@@ -1,7 +1,9 @@
+from gpt_terminal.managers.model_menu.chatgpt_settings import ChatGPTData
+
 
 class ModelMenu:
-    def __init__(self, model_data):
-        self.model_data = model_data
+    def __init__(self):
+        self.model_data = ChatGPTData()
 
     def display_model_settings(self):
         print("Model Settings : ")

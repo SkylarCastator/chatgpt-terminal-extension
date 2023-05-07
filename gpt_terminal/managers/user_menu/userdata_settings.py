@@ -1,6 +1,6 @@
 import json
 import os
-from gpt_terminal.helpers import platform_helper
+from gpt_terminal import platform_helper
 
 
 class UserData:
