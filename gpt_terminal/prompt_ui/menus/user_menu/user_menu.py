@@ -3,8 +3,8 @@ from gpt_terminal.preferences.userdata_settings import UserData
 
 class UserMenu:
     def __init__(self, user_data):
-        print("Loaded user menu")
+        pass
 
-    def display_data():
+    def display_user_settings(self):
         print("Dislaying data")
 

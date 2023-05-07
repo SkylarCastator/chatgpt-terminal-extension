@@ -2,16 +2,20 @@
   "name": "Model Settings",
   "prompt": ":model",
   "log_message": "Welcome to the Model Settings Menu",
-  "help_message": "    :model - Opens the menu to adjust settings for the LLM model.",
-  "prompt_header": "Model Menu>> ",
+  "help_message": "Opens the menu to adjust settings for the LLM model.",
+  "error_message": "That wasn't a correct prompt, use the :help prompt to find available prompts.",
+  "prompt_header": "Model Menu >>",
+  "class": "model_menu",
   "function": "",
   "menu_items": [
     {
       "name": "Display",
       "prompt": ":display",
       "log_message": "",
-      "help_message": "Display Model Settings",
+      "help_message": "Display model settings",
+      "error_message": "That wasn't a correct prompt, use the :help prompt to find available prompts.",
       "prompt_header": "",
+      "class": "model_menu",
       "function": "display_model_settings",
       "menu_items": []
     }

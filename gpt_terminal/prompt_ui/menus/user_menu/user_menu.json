@@ -1,17 +1,21 @@
 {
   "name": "User Settings",
-  "prompt": "user:",
+  "prompt": ":user",
   "log_message": "Welcome to the User Settings Menu",
-  "help_message": "    :user - Opens the user settings menu",
-  "prompt_header": "User>> ",
+  "help_message": "Opens the user settings menu",
+  "error_message": "That wasn't a correct prompt, use the :help prompt to find available prompts.",
+  "prompt_header": "User >>",
+  "class": "user_menu",
   "function": "",
   "menu_items": [
     {
       "name": "Display",
       "prompt": ":display",
       "log_message": "",
-      "help_message": "Display User Settings",
+      "help_message": "Displays the user settings",
+      "error_message": "That wasn't a correct prompt, use the :help prompt to find available prompts.",
       "prompt_header": "",
+      "class": "user_menu",
       "function": "display_user_settings",
       "menu_items": []
     }

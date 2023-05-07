@@ -11,12 +11,12 @@ class History:
         if not os.path.exists(project_path):
             os.mkdir(project_path)
     
-    def save_history(chat_history, file_name="history_0"):
+    def save_history(self, chat_history, file_name="history_0"):
         file_path = f"{self.project_path}/{file_name}
         with open(file_path, "w") as f:
-            json.dump(messages_to_dict(history.messages), f)
+            json.dump(messages_to_dict(chat_history.messages), f)
 
-    def load_history(filename="history_0"):
+    def load_history(self, filename="history_0"):
         file_path = f"{self.project_path}/{filename}"
         with open(f"{filename}.json", "r") as f:
             dict = json.load(f)

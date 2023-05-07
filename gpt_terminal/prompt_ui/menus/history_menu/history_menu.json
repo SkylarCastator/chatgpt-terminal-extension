@@ -2,8 +2,10 @@
   "name": "History",
   "prompt": ":history",
   "log_message": "Welcome to the history menu",
-  "help_message": "    :history - Opens the menu to organize previous conversations",
-  "prompt_header": "History>> ",
+  "help_message": "Opens the menu to organize previous conversations",
+  "error_message": "That wasn't a correct prompt, use the :help prompt to find available prompts.",
+  "prompt_header": "History >>",
+  "class": "history_menu",
   "function": "",
   "menu_items": [
     {
@@ -11,7 +13,9 @@
       "prompt": ":display",
       "log_message": "",
       "help_message": "Display All Previous Conversations",
+      "error_message": "That wasn't a correct prompt, use the :help prompt to find available prompts.",
       "prompt_header": "",
+      "class": "history_menu",
       "function": "list_all_conversations",
       "menu_items": []
     }

@@ -1,4 +1,7 @@
 
 class ModelMenu:
     def __init__(self):
-        print("Loaded model menu")
+        pass
+
+    def display_model_settings(self):
+        print("Show settigns")
