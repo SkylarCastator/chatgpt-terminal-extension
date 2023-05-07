@@ -18,6 +18,39 @@
       "class": "history_menu",
       "function": "list_all_conversations",
       "menu_items": []
+    },
+    {
+      "name": "Load",
+      "prompt": ":load",
+      "log_message": "",
+      "help_message": "Load a conversation into the prompt",
+      "error_message": "That wasn't a correct prompt, use the :help prompt to find available prompts.",
+      "prompt_header": "",
+      "class": "history_menu",
+      "function": "load_conversation",
+      "menu_items": []
+    },
+    {
+      "name": "Print",
+      "prompt": ":print",
+      "log_message": "",
+      "help_message": "Print a conversation into the prompt",
+      "error_message": "That wasn't a correct prompt, use the :help prompt to find available prompts.",
+      "prompt_header": "",
+      "class": "history_menu",
+      "function": "print_conversation",
+      "menu_items": []
+    },
+    {
+      "name": "Delete",
+      "prompt": ":delete",
+      "log_message": "",
+      "help_message": "Delete a conversation from history",
+      "error_message": "That wasn't a correct prompt, use the :help prompt to find available prompts.",
+      "prompt_header": "",
+      "class": "history_menu",
+      "function": "delete_conversation",
+      "menu_items": []
     }
   ]
 }

@@ -1,5 +1,5 @@
 from gpt_terminal.chatgpt.chatgpt import ChatGPT
-from gpt_terminal.menus.user_menu import UserData
+from gpt_terminal.managers.user_menu.userdata_settings import UserData
 import pyfiglet
 import json
 from gpt_terminal.menu_interface import MenuInterface

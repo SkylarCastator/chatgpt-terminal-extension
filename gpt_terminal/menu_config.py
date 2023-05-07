@@ -11,7 +11,7 @@ class MenuConfig:
 
     def return_menu_json_paths(self):
         return [
-            "gpt_terminal/prompt_ui/managers/user_menu/user_menu.json",
-            "gpt_terminal/prompt_ui/managers/model_menu/model_menu.json",
-            "gpt_terminal/prompt_ui/managers/history_menu/history_menu.json"
+            "gpt_terminal/managers/user_menu/user_menu.json",
+            "gpt_terminal/managers/model_menu/model_menu.json",
+            "gpt_terminal/managers/history_menu/history_menu.json"
         ]

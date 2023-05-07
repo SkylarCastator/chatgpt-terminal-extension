@@ -25,3 +25,8 @@ class History:
             dict = json.load(f)
             return messages_from_dict(dict)
 
+    def delete_conversation(self, filename):
+        file_path = f"{self.history_path}/{filename}.json"
+        if os.path.exists(file_path):
+            os.remove(file_path)
+

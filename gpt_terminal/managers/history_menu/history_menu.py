@@ -28,5 +28,6 @@ class HistoryMenu:
     def save_conversation_to_file(self):
         pass
 
-    def delete_conversation(self):
-        pass
+    def delete_conversation(self, conversation_name):
+        self.history_settings.delete_conversation(conversation_name)
+        print(f"Deleted the conversation : {conversation_name}")
