@@ -1,7 +1,8 @@
 
 class ModelMenu:
-    def __init__(self):
-        pass
+    def __init__(self, model_data):
+        self.model_data = model_data
 
     def display_model_settings(self):
-        print("Show settigns")
+        print("Model Settings : ")
+        print(self.model_data.get_gpt_data_json())
