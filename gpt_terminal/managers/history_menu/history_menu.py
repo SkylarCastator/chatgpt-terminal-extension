@@ -20,7 +20,8 @@ class HistoryMenu:
         print(f"Loading conversation : {conversation_name}")
         print(conversation)
 
-    def print_conversation(self, conversation_name):
+    def print_conversation(self):
+        conversation_name = "SkylarCastator_DomainNameSuggestions"
         conversation = self.history_settings.load_history(conversation_name)
         print(f"Loading conversation : {conversation_name}")
         print(conversation)

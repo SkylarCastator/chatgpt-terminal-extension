@@ -17,7 +17,7 @@ class History:
     def save_history(self, chat_history, file_name="history_0"):
         file_path = f"{self.history_path}/{file_name}.json"
         with open(file_path, "w") as f:
-            json.dump(messages_to_dict(chat_history.messages), f)
+            json.dump(messages_to_dict(chat_history.messages), f, indent=4)
 
     def load_history(self, filename="history_0"):
         file_path = f"{self.history_path}/{filename}.json"

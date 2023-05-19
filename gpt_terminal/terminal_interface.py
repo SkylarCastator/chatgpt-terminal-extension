@@ -39,7 +39,7 @@ class TerminalInterface:
     def test_connection(self):
         connection = self.gpt_instance.test_chatgpt_connection()
         if connection:
-            self.enter_user_prompt_2(self.interface)
+            self.enter_user_prompt(self.interface)
         else:
             print(
                 "The connection to ChatGPT could not be created. Make sure you are connected to the internet or have the correct key")
@@ -114,40 +114,43 @@ class TerminalInterface:
                 self.user_data.chatgpt_token = variable
                 self.user_data.write_user_data_file()
                 print("Connection Completed. Start ChatGPT by entering a prompt")
-                self.enter_user_prompt_2(self.interface)
+                self.enter_user_prompt(self.interface)
             else:
                 print("Failed to connect to ChatGPT, make sure you are using the correct key.")
                 self.prompt_for_chatgpt_token()
 
-    def enter_user_prompt_2(self, menu_system):
+    def enter_user_prompt(self, menu_system):
         variable = input(menu_system.prompt_header)
         if variable in menu_system.menu_items:
             if not menu_system.menu_items[variable].func_call == "":
                 class_ref = getattr(self.menu_config, menu_system.menu_items[variable].class_ref)
                 func_call = getattr(class_ref, menu_system.menu_items[variable].func_call)
                 func_call()
-                self.enter_user_prompt_2(menu_system)
+                self.enter_user_prompt(menu_system)
                 return
             if len(menu_system.menu_items[variable].menu_items) > 0:
-                self.enter_user_prompt_2(menu_system.menu_items[variable])
+                self.enter_user_prompt(menu_system.menu_items[variable])
         elif variable == ":exit":
             exit()
         elif variable == ":chat":
-            self.enter_user_prompt_2(self.interface)
+            self.enter_user_prompt(self.interface)
         elif variable == ":help":
-            print(menu_system.log_message)
-            for child in menu_system.menu_items:
-                print(f"{menu_system.menu_items[child].prompt}    {menu_system.menu_items[child].help_message}")
-            print(":chat    Goes to the the chat prompt")
-            print(":exit    Exits the application")
-            self.enter_user_prompt_2(menu_system)
+            self.print_help_information(menu_system)
         else:
             if menu_system.func_call != "":
                 func_call = getattr(self, menu_system.func_call)
                 func_call(variable)
             else:
                 print(menu_system.error_message)
-            self.enter_user_prompt_2(menu_system)
+            self.enter_user_prompt(menu_system)
+
+    def print_help_information(self, menu_system):
+        print(menu_system.log_message)
+        for child in menu_system.menu_items:
+            print(f"{menu_system.menu_items[child].prompt}    {menu_system.menu_items[child].help_message}")
+        print(":chat    Goes to the the chat prompt")
+        print(":exit    Exits the application")
+        self.enter_user_prompt(menu_system)
 
     def call_llm_response(self, prompt):
         """
