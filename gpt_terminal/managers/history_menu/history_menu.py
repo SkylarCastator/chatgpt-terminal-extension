@@ -1,4 +1,5 @@
 from gpt_terminal.managers.history_menu.history_settings import History
+from simple_term_menu import TerminalMenu
 
 
 class HistoryMenu:
@@ -15,20 +16,26 @@ class HistoryMenu:
         else:
             print("No previous conversations were found")
 
-    def load_conversation(self, conversation_name):
-        conversation = self.history_settings.load_history(conversation_name)
-        print(f"Loading conversation : {conversation_name}")
-        print(conversation)
+    def load_conversation(self):
+        options = self.history_settings.list_history_files()
+        terminal_menu = TerminalMenu(options)
+        menu_entry_index = terminal_menu.show()
+        conversation = self.history_settings.load_history(options[menu_entry_index])
+        print(f"Loading conversation : {options[menu_entry_index]}")
 
     def print_conversation(self):
-        conversation_name = "SkylarCastator_DomainNameSuggestions"
-        conversation = self.history_settings.load_history(conversation_name)
-        print(f"Loading conversation : {conversation_name}")
+        options = self.history_settings.list_history_files()
+        terminal_menu = TerminalMenu(options)
+        menu_entry_index = terminal_menu.show()
+
+        conversation = self.history_settings.load_history(options[menu_entry_index].replace(".json", ""))
+        print(f"Loading conversation : {options[menu_entry_index]}")
         print(conversation)
 
-    def save_conversation_to_file(self):
-        pass
+    def delete_conversation(self):
+        options = self.history_settings.list_history_files()
+        terminal_menu = TerminalMenu(options)
+        menu_entry_index = terminal_menu.show()
 
-    def delete_conversation(self, conversation_name):
-        self.history_settings.delete_conversation(conversation_name)
-        print(f"Deleted the conversation : {conversation_name}")
+        self.history_settings.delete_conversation(options[menu_entry_index].replace(".json", ""))
+        print(f"Deleted the conversation : {options[menu_entry_index]}")

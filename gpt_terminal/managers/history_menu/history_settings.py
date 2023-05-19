@@ -21,7 +21,7 @@ class History:
 
     def load_history(self, filename="history_0"):
         file_path = f"{self.history_path}/{filename}.json"
-        with open(f"{filename}.json", "r") as f:
+        with open(file_path, "r") as f:
             dict = json.load(f)
             return messages_from_dict(dict)
 
