@@ -22,6 +22,9 @@ class HistoryMenu:
         menu_entry_index = terminal_menu.show()
         conversation = self.history_settings.load_history(options[menu_entry_index])
         print(f"Loading conversation : {options[menu_entry_index]}")
+        for response in self.history_settings.parse_conversation(conversation):
+            print(response)
+            print("\n")
 
     def print_conversation(self):
         options = self.history_settings.list_history_files()
@@ -30,7 +33,9 @@ class HistoryMenu:
 
         conversation = self.history_settings.load_history(options[menu_entry_index].replace(".json", ""))
         print(f"Loading conversation : {options[menu_entry_index]}")
-        print(conversation)
+        for response in self.history_settings.parse_conversation(conversation):
+            print(response)
+            print("\n")
 
     def delete_conversation(self):
         options = self.history_settings.list_history_files()

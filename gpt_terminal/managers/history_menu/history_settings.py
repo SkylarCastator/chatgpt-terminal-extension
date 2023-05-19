@@ -2,6 +2,7 @@ import json
 import os
 from gpt_terminal import platform_helper
 from langchain.schema import messages_from_dict, messages_to_dict
+from langchain.memory import ChatMessageHistory
 
 
 class History:
@@ -29,4 +30,11 @@ class History:
         file_path = f"{self.history_path}/{filename}.json"
         if os.path.exists(file_path):
             os.remove(file_path)
+
+    def parse_conversation(self, chat_history):
+        content_list = []
+        for response in chat_history:
+            content_list.append(response)
+        return content_list
+
 

@@ -15,7 +15,7 @@ class TerminalInterface:
         self.interface = MenuInterface(
             name="Main Menu",
             prompt="",
-            log_message="Welcome to TermChat",
+            log_message="Welcome to TermChat, type :help to look at different menu options",
             help_message=" Welcome to the ChatGPT Terminal App Help Menu",
             error_message="That was not a correct prompt, use the :help command to find available prompts",
             prompt_header=">>",
@@ -25,7 +25,7 @@ class TerminalInterface:
 
         self.menu_config = menu_config.MenuConfig(self)
         json_list = self.menu_config.return_menu_json_paths()
- 
+
         self.compile_menu_interfaces(json_list, self.interface)
 
         if self.user_data.check_user_file_exists():
@@ -39,6 +39,7 @@ class TerminalInterface:
     def test_connection(self):
         connection = self.gpt_instance.test_chatgpt_connection()
         if connection:
+            print(self.interface.log_message)
             self.enter_user_prompt(self.interface)
         else:
             print(
@@ -120,7 +121,9 @@ class TerminalInterface:
                 self.prompt_for_chatgpt_token()
 
     def enter_user_prompt(self, menu_system):
+        print("\n")
         variable = input(menu_system.prompt_header)
+        print("\n")
         if variable in menu_system.menu_items:
             if not menu_system.menu_items[variable].func_call == "":
                 class_ref = getattr(self.menu_config, menu_system.menu_items[variable].class_ref)
