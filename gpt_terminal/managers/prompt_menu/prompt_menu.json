@@ -1,0 +1,34 @@
+{
+  "name": "Prompt",
+  "prompt": ":prompt",
+  "log_message": "Welcome to the prompt menu",
+  "help_message": "Opens the menu to launch conversations based on prompts",
+  "error_message": "That wasn't a correct prompt, use the :help prompt to find available prompts.",
+  "prompt_header": "Prompt >>",
+  "class": "prompt_menu",
+  "function": "",
+  "menu_items": [
+    {
+      "name": "Display",
+      "prompt": ":display",
+      "log_message": "",
+      "help_message": "Display All Prompts",
+      "error_message": "That wasn't a correct prompt, use the :help prompt to find available prompts.",
+      "prompt_header": "",
+      "class": "prompt_menu",
+      "function": "list_all_prompts",
+      "menu_items": []
+    },
+    {
+      "name": "Load",
+      "prompt": ":load",
+      "log_message": "",
+      "help_message": "Load a prompt to be used",
+      "error_message": "That wasn't a correct prompt, use the :help prompt to find available prompts.",
+      "prompt_header": "",
+      "class": "prompt_menu",
+      "function": "load_prompt",
+      "menu_items": []
+    }
+  ]
+}

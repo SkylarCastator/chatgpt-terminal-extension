@@ -1,20 +1,21 @@
 import json
+import os
+
 
 class PromptSettings:
     def __init__(self):
-        self.prompt_list = []
+        self.prompt_data = self._load()
 
-    class Prompt:
-        def __init__(self):
-            self.prompt_infromation = ""
-            self.prompt_input = ""
-            self.inputs = {}
+    def list_all(self):
+        arr = []
+        for key in self.prompt_data.keys():
+            arr.append(key)
+        return arr
 
-        def write_prompt(self):
-            prompt_split = self.prompt_input.split("{}")
-            final_prompt = ""
-            for part_count in range(prompt_split):
-                final_prompt +=  part_count
-                final_prompt += self.inputs[part_count]
-            return final_prompt
+    def _load(self):
+        with open("prompts.json", "r") as f:
+            return json.load(f)
+
+    def get_prompt_content(self, prompt_key):
+        return self.prompt_data[prompt_key]["prompt"]
 

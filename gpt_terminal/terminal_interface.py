@@ -162,7 +162,3 @@ class TerminalInterface:
         response = self.gpt_instance.respond_to_prompt(prompt)
         print(response)
 
-   #         print(self.gpt_instance.gpt_settings.get_gpt_data_json())
-    #        print(self.user_data.get_user_data_json())
-    #        self.set_user_pref_prompt()
-
