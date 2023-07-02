@@ -1,0 +1,34 @@
+self.interface = MenuInterface(
+            name="Main Menu",
+            prompt="",
+            log_message="Welcome to TermChat, type :help to look at different menu options",
+            help_message=" Welcome to the ChatGPT Terminal App Help Menu",
+            error_message="That was not a correct prompt, use the :help command to find available prompts",
+            prompt_header=">>",
+            class_ref="",
+            func_call="call_llm_response",
+            menu_items={})
+
+{
+  "name": "Main Menu",
+  "prompt": "",
+  "log_message": "Welcome to TermChat, type :help to look at different menu options",
+  "help_message": "Welcome to the ChatGPT Terminal App Help Menu",
+  "error_message": "That was not a correct prompt, use the :help command to find available prompts",
+  "prompt_header": ">>",
+  "class": "",
+  "function": "call_llm_response",
+  "menu_items": [
+    {
+      "name": "New Conversation",
+      "prompt": ":new",
+      "log_message": "",
+      "help_message": "Reset Conversation",
+      "error_message": "That wasn't a correct prompt, use the :help prompt to find available prompts.",
+      "prompt_header": "",
+      "class": "",
+      "function": "create_new_conversation",
+      "menu_items": []
+    }
+  ]
+}

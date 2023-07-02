@@ -155,10 +155,10 @@ class TerminalInterface:
         print(":exit    Exits the application")
         self.enter_user_prompt(menu_system)
 
-    def call_llm_response(self, prompt):
+    def call_llm_response(self, prompt, prompt_name=""):
         """
         Calls the LLM response function
         """
-        response = self.gpt_instance.respond_to_prompt(prompt)
+        response = self.gpt_instance.respond_to_prompt(prompt, prompt_name)
         print(response)
 

@@ -3,7 +3,8 @@ from simple_term_menu import TerminalMenu
 
 
 class HistoryMenu:
-    def __init__(self):
+    def __init__(self, terminal_instance):
+        self.terminal_instance = terminal_instance
         self.history_settings = History()
 
     def list_all_conversations(self):
@@ -21,10 +22,18 @@ class HistoryMenu:
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()
         conversation = self.history_settings.load_history(options[menu_entry_index])
+        prompt_name = options[menu_entry_index]
         print(f"Loading conversation : {options[menu_entry_index]}")
+        self.terminal_instance.call_llm_response(selected_prompt, prompt_name)
+        self.terminal_instance.enter_user_prompt(self.terminal_instance.interface)
+
         for response in self.history_settings.parse_conversation(conversation):
             print(response)
             print("\n")
+
+    def print_path(self):
+        print("Path to History Files: ")
+        print(self.history_settings.get_history_path())
 
     def print_conversation(self):
         options = self.history_settings.list_history_files()

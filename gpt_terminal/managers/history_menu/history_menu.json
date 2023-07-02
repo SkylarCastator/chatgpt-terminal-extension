@@ -20,6 +20,17 @@
       "menu_items": []
     },
     {
+      "name": "Path",
+      "prompt": ":path",
+      "log_message": "",
+      "help_message": "Display the path to the user's history files",
+      "error_message": "That wasn't a correct prompt, use the :help prompt to find available prompts.",
+      "prompt_header": "",
+      "class": "history_menu",
+      "function": "print_path",
+      "menu_items": []
+    },
+    {
       "name": "Load",
       "prompt": ":load",
       "log_message": "",

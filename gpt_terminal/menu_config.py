@@ -8,8 +8,8 @@ class MenuConfig:
     def __init__(self, terminal_interface):
         self.user_menu = user_menu.UserMenu(terminal_interface.user_data)
         self.model_menu = model_menu.ModelMenu()
-        self.history_menu = history_menu.HistoryMenu()
-        self.prompt_menu = prompt_menu.PromptMenu()
+        self.history_menu = history_menu.HistoryMenu(terminal_interface)
+        self.prompt_menu = prompt_menu.PromptMenu(terminal_interface)
 
     def return_menu_json_paths(self):
         return [

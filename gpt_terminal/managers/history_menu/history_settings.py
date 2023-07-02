@@ -15,6 +15,9 @@ class History:
         arr = os.listdir(self.history_path)
         return arr
 
+    def get_history_path(self):
+        return self.history_path
+
     def save_history(self, chat_history, file_name="history_0"):
         file_path = f"{self.history_path}/{file_name}.json"
         with open(file_path, "w") as f:
