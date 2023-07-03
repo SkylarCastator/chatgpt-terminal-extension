@@ -27,7 +27,7 @@ class History:
         file_path = f"{self.history_path}/{filename}.json"
         with open(file_path, "r") as f:
             dict = json.load(f)
-            return messages_from_dict(dict)
+            return dict
 
     def delete_conversation(self, filename):
         file_path = f"{self.history_path}/{filename}.json"

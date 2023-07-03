@@ -2,6 +2,7 @@ import openai
 from gpt_terminal.managers.model_menu.chatgpt_settings import ChatGPTData
 from langchain.memory import ChatMessageHistory
 from gpt_terminal.managers.history_menu.history_settings import History
+from langchain.schema import messages_from_dict, messages_to_dict
 
 
 class ChatGPT:
@@ -46,38 +47,52 @@ class ChatGPT:
         if self.conversation_prompt_summary == "":
             self.create_summary_title_for_conversation(prompt)
         self.chat_history.add_user_message(prompt)
-        response = openai.Completion.create(
-            engine=self.gpt_settings.model_engine,
-            prompt=prompt,
-            max_tokens=self.gpt_settings.max_tokens,
-            temperature=0)
-        text = response.choices[0].text.strip()
+
+        messages = []
+        for message in messages_to_dict(self.chat_history.messages):
+            if message["type"] == "human":
+                role = "user"
+            else:
+                role = "assistant"
+            messages.append({"role": role, "content": message["data"]["content"]})
+
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=messages
+        )
+
+        text = response['choices'][0]['message']['content']
         self.chat_history.add_ai_message(text)
         self.history_manager.save_history(self.chat_history, self.conversation_prompt_summary)
         return text
 
-    def load_chat_history(self, chat_history, chat_name):
-        if chat_name != "":
-            self.conversation_prompt_summary = chat_name
-            self.chat_history = ChatMessageHistory()
-
-
-    def create_new_conversation(self):
-        self.conversation_prompt_summary = ""
-
     def load_conversation(self, conversation_name, chat_history):
+        self.chat_history = ChatMessageHistory()
         self.conversation_prompt_summary = conversation_name
-        messages = [{"role": message["type"], "content": message["data"]["content"]} for message in chat_history]
+
+        messages = []
+        for message in chat_history:
+            if message["type"] == "human":
+                role = "user"
+            else:
+                role = "assistant"
+            messages.append({"role": role, "content": message["data"]["content"]})
+
+        for message in chat_history:
+            if message["type"] == "human":
+                self.chat_history.add_user_message(message["data"]["content"])
+            else:
+                self.chat_history.add_ai_message(message["data"]["content"])
+
+        messages.append({"role": "user", "content": "Please say 'Ready'"})
 
         response = openai.ChatCompletion.create(
-            model=self.gpt_settings.model_engine,
+            model="gpt-3.5-turbo",
             messages=messages
         )
 
         reply = response['choices'][0]['message']['content']
-        self.chat_history.add_ai_message(reply)
-        self.history_manager.save_history(self.chat_history, self.conversation_prompt_summary)
-        print(reply)
+        return reply
 
     def create_summary_title_for_conversation(self, prompt):
         response = openai.Completion.create(

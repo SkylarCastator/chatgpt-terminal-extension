@@ -21,15 +21,14 @@ class HistoryMenu:
         options = self.history_settings.list_history_files()
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()
-        conversation = self.history_settings.load_history(options[menu_entry_index])
-        prompt_name = options[menu_entry_index]
+        conversation = self.history_settings.load_history(options[menu_entry_index].replace(".json", ""))
+        print(conversation)
+        prompt_name = options[menu_entry_index].replace(".json", "")
         print(f"Loading conversation : {options[menu_entry_index]}")
-        self.terminal_instance.call_llm_response(selected_prompt, prompt_name)
-        self.terminal_instance.enter_user_prompt(self.terminal_instance.interface)
-
         for response in self.history_settings.parse_conversation(conversation):
             print(response)
             print("\n")
+        self.terminal_instance.load_previous_conversation(prompt_name, conversation)
 
     def print_path(self):
         print("Path to History Files: ")

@@ -162,3 +162,8 @@ class TerminalInterface:
         response = self.gpt_instance.respond_to_prompt(prompt, prompt_name)
         print(response)
 
+    def load_previous_conversation(self, conversation_name, conversation_data):
+        reply = self.gpt_instance.load_conversation(conversation_name, conversation_data)
+        print(reply)
+        self.enter_user_prompt(self.interface)
+
