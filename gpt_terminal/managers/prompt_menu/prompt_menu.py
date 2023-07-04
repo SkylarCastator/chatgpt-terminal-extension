@@ -1,6 +1,6 @@
 import json
 import os
-from simple_term_menu import TerminalMenu
+import gpt_terminal.prompt_ui.dropdownmenu as dropdownmenu
 from gpt_terminal.managers.prompt_menu.prompts_settings import PromptSettings
 
 
@@ -20,13 +20,12 @@ class PromptMenu:
 
     def load_prompt(self):
         options = self.prompt_settings.list_all()
-        terminal_menu = TerminalMenu(options)
-        menu_entry_index = terminal_menu.show()
-        selected_prompt = self.prompt_settings.get_prompt_content(options[menu_entry_index])
-        prompt_name = options[menu_entry_index]
+        selected_item = dropdownmenu.dropdown_menu(options)
+        selected_prompt = self.prompt_settings.get_prompt_content(selected_item)
+        prompt_name = selected_item
         prompt_name = prompt_name.replace(" ", "_")
         prompt_name = prompt_name.lower()
-        print(f"Loading conversation : {options[menu_entry_index]}")
+        print(f"Loading conversation : {selected_item}")
         print(f"{selected_prompt}\n")
         self.terminal_instance.call_llm_response(selected_prompt, prompt_name)
         self.terminal_instance.enter_user_prompt(self.terminal_instance.interface)

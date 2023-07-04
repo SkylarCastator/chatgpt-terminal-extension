@@ -1,5 +1,5 @@
 from gpt_terminal.managers.history_menu.history_settings import History
-from simple_term_menu import TerminalMenu
+import gpt_terminal.prompt_ui.dropdownmenu as dropdownmenu
 
 
 class HistoryMenu:
@@ -36,19 +36,17 @@ class HistoryMenu:
 
     def print_conversation(self):
         options = self.history_settings.list_history_files()
-        terminal_menu = TerminalMenu(options)
-        menu_entry_index = terminal_menu.show()
+        selected_item = dropdownmenu.dropdown_menu(options)
 
-        conversation = self.history_settings.load_history(options[menu_entry_index].replace(".json", ""))
-        print(f"Loading conversation : {options[menu_entry_index]}")
+        conversation = self.history_settings.load_history(selected_item.replace(".json", ""))
+        print(f"Loading conversation : {selected_item}")
         for response in self.history_settings.parse_conversation(conversation):
             print(response)
             print("\n")
 
     def delete_conversation(self):
         options = self.history_settings.list_history_files()
-        terminal_menu = TerminalMenu(options)
-        menu_entry_index = terminal_menu.show()
+        selected_item = dropdownmenu.dropdown_menu(options)
 
-        self.history_settings.delete_conversation(options[menu_entry_index].replace(".json", ""))
-        print(f"Deleted the conversation : {options[menu_entry_index]}")
+        self.history_settings.delete_conversation(selected_item.replace(".json", ""))
+        print(f"Deleted the conversation : {selected_item}")
