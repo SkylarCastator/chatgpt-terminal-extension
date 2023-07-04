@@ -8,7 +8,7 @@ import gpt_terminal.menu_config as menu_config
 
 class TerminalInterface:
     def __init__(self):
-        ascii_banner = pyfiglet.figlet_format("ChatGPT")
+        ascii_banner = pyfiglet.figlet_format("TermChat")
         print(ascii_banner)
         self.user_data = UserData()
         self.menus = {}
@@ -16,7 +16,7 @@ class TerminalInterface:
             name="Main Menu",
             prompt="",
             log_message="Welcome to TermChat, type :help to look at different menu options",
-            help_message=" Welcome to the ChatGPT Terminal App Help Menu",
+            help_message=" Welcome to the TermChat App Help Menu",
             error_message="That was not a correct prompt, use the :help command to find available prompts",
             prompt_header=">>",
             class_ref="",
@@ -82,7 +82,7 @@ class TerminalInterface:
     def prompt_onboarding(self):
         self.user_data.write_user_data_file()
         print("""
-        Welcome to ChatGPT Terminal App
+        Welcome to TermChat App
         We need to connect a ChatGPT key to the gpt_terminal.
         Use the link https://platform.openai.com/account/api-keys to get the key and enter it in the prompt.""")
         self.prompt_for_chatgpt_token()
