@@ -13,7 +13,7 @@ class ChatGPT:
 
         self.gpt_settings = ChatGPTData()
         openai.api_key = api_key
-        self.model_engine = "text-davinci-003"
+        self.model_engine = "gpt-3.5-turbo"
 
         self.conversation_prompt_summary = ""
         self.chat_history = ChatMessageHistory()
@@ -31,7 +31,8 @@ class ChatGPT:
                 max_tokens=self.gpt_settings.max_tokens)
             text = response.choices[0].text.strip()
             return True
-        except:
+        except Exception as e:
+            print("Failed to connect : " + str(e))
             return False
 
     def respond_to_prompt(self, prompt, prompt_name=""):

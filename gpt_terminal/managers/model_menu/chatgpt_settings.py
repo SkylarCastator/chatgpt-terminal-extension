@@ -5,7 +5,7 @@ from gpt_terminal import platform_helper
 
 class ChatGPTData:
     def __init__(self):
-        self.model_engine = "text-davinci-003"
+        self.model_engine = "gpt-3.5-turbo"
         self.max_tokens = 100
 
         project_path = f"{platform_helper.get_appdata_folder()}/GPT-Terminal/"
