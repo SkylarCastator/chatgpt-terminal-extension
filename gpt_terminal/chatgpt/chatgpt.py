@@ -25,7 +25,7 @@ class ChatGPT:
         :return: (boolean) Returns if a connection could be made to ChatGPT
         """
         try:
-            response = openai.Completion.create(
+            response = openai.ChatCompletion.create(
                 engine=self.gpt_settings.model_engine,
                 prompt="Hello",
                 max_tokens=self.gpt_settings.max_tokens)
@@ -96,7 +96,7 @@ class ChatGPT:
         return reply
 
     def create_summary_title_for_conversation(self, prompt):
-        response = openai.Completion.create(
+        response = openai.ChatCompletion.create(
             engine=self.gpt_settings.model_engine,
             prompt=f"Return a summarized name of this prompt to be used as a file : {prompt}",
             max_tokens=self.gpt_settings.max_tokens,
